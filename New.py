@@ -27,8 +27,8 @@ def process(copy, move):
                                 messagebox.showerror("错误", f"复制时发生错误，以下为详细信息：\n{e}")
                         elif move == True:
                             try:
-                              shutil.move(os.path.join(root, file), output_dir)
-                              messagebox.showinfo("成功", "处理完成！")
+                                shutil.move(os.path.join(root, file), output_dir)
+                                messagebox.showinfo("成功", "处理完成！")
                             except Exception as e:
                                 messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
     else:
@@ -70,7 +70,7 @@ def all_process(copy, move):
         messagebox.showwarning("提示", "路径不存在！")
 
 
-def all_process_an_copy():
+def all_process_and_copy():
     all_process(True, False)
 
 
