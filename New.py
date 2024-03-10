@@ -31,6 +31,8 @@ def process(copy, move):
                                 messagebox.showinfo("成功", "处理完成！")
                             except Exception as e:
                                 messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
+        except Exception as e:
+            messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
     else:
         messagebox.showwarning("提示", "路径不存在！")
 
