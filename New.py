@@ -6,7 +6,9 @@ from tkinter import filedialog
 
 
 def process(copy, move):
-    global input_dir, suffix, output_dir
+    input_dir = input_entry.get()
+    suffix = suffix_entry.get()
+    output_dir = output_entry.get()
 
     if not os.path.exists(output_dir):
         try:
@@ -46,7 +48,8 @@ def process_and_move():
 
 
 def all_process(copy, move):
-    global input_dir, output_dir
+    input_dir = input_entry.get()
+    output_dir = output_entry.get()
 
     if os.path.exists(input_dir):
         try:
@@ -100,19 +103,16 @@ label1 = tk.Label(root, text="需要处理的目录：")
 label1.grid(row=0, column=0, padx=(10, 0))
 input_entry = tk.Entry(root, width=30)
 input_entry.grid(row=0, column=1, padx=(10, 0))
-input_dir = input_entry.get()
 
 label2 = tk.Label(root, text="后缀名：")
 label2.grid(row=1, column=0, padx=(10, 0))
 suffix_entry = tk.Entry(root, width=15)
 suffix_entry.grid(row=1, column=1, padx=(10, 0))
-suffix = suffix_entry.get()
 
 label3 = tk.Label(root, text="输出目录：")
 label3.grid(row=2, column=0, padx=(10, 0))
 output_entry = tk.Entry(root, width=30)
 output_entry.grid(row=2, column=1, padx=(10, 0))
-output_dir = output_entry.get()
 
 input_button = tk.Button(root, text="目录选择", command=browse_input_dir)
 input_button.grid(row=0, column=2)
