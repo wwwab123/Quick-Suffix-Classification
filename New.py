@@ -24,20 +24,18 @@ def process(copy, move):
                         if copy == True:
                             try:
                                 shutil.copy(os.path.join(root, file), output_dir)
-                                messagebox.showinfo("成功", "处理完成！")
                             except Exception as e:
                                 messagebox.showerror("错误", f"复制时发生错误，以下为详细信息：\n{e}")
                         elif move == True:
                             try:
                                 shutil.move(os.path.join(root, file), output_dir)
-                                messagebox.showinfo("成功", "处理完成！")
                             except Exception as e:
                                 messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
     else:
         messagebox.showwarning("提示", "路径不存在！")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def process_and_copy():
     process(True, False)
@@ -60,20 +58,18 @@ def all_process(copy, move):
                     if copy == True:
                         try:
                             shutil.copy(os.path.join(root, file), os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
-                            messagebox.showinfo("成功", "处理完成！")
                         except Exception as e:
                             messagebox.showerror("错误", f"复制时发生错误，以下为详细信息：\n{e}")
                     elif move == True:
                         try:
                             shutil.move(os.path.join(root, file), os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
-                            messagebox.showinfo("成功", "处理完成！")
                         except Exception as e:
                             messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"发生错误，以下为详细信息：\n{e}")
     else:
         messagebox.showwarning("提示", "路径不存在！")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def all_process_and_copy():
     all_process(True, False)
