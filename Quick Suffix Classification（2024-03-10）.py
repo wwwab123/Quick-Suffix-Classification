@@ -6,7 +6,9 @@ from tkinter import filedialog
 
 
 def process_and_copy():
-    global input_dir, suffix, output_dir
+    input_dir = input_entry.get()
+    suffix = suffix.get()
+    output_dir = output_dir.get()
 
     if not os.path.exists(output_dir):
         try:
@@ -21,17 +23,18 @@ def process_and_copy():
                     if file.endswith(suffix):
                         try:
                             shutil.copy(os.path.join(root, file), output_dir)
-                            messagebox.showinfo("成功", "处理完成！")
                         except Exception as e:
                             messagebox.showerror("错误", f"复制时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"发生错误，以下为详细信息：\n{e}")
     else:
         messagebox.showwarning("提示", "路径不存在！")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def process_and_move():
-    global input_dir, suffix, output_dir
+    input_dir = input_entry.get()
+    suffix = suffix.get()
+    output_dir = output_dir.get()
 
     if not os.path.exists(output_dir):
         try:
@@ -46,15 +49,15 @@ def process_and_move():
                     if file.endswith(suffix):
                         try:
                             shutil.move(os.path.join(root, file), output_dir)
-                            messagebox.showinfo("成功", "处理完成！")
                         except Exception as e:
                             messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"发生错误，以下为详细信息：\n{e}")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def all_process_and_copy():
-    global input_dir, output_dir
+    input_dir = input_entry.get()
+    output_dir = output_dir.get()
 
     if os.path.exists(input_dir):
         try:
@@ -64,15 +67,15 @@ def all_process_and_copy():
                         os.makedirs(os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
                     try:
                         shutil.copy(os.path.join(root, file), os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
-                        messagebox.showinfo("成功", "处理完成！")
                     except Exception as e:
                         messagebox.showerror("错误", f"复制时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"发生错误，以下为详细信息：\n{e}")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def all_process_and_move():
-    global input_dir, output_dir
+    input_dir = input_entry.get()
+    output_dir = output_dir.get()
 
     if os.path.exists(input_dir):
         try:
@@ -82,12 +85,11 @@ def all_process_and_move():
                         os.makedirs(os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
                     try:
                         shutil.move(os.path.join(root, file), os.path.join(output_dir, os.path.splitext(file)[-1].lstrip('.')))
-                        messagebox.showinfo("成功", "处理完成！")
                     except Exception as e:
                         messagebox.showerror("错误", f"移动时发生错误，以下为详细信息：\n{e}")
         except Exception as e:
             messagebox.showerror("错误", f"发生错误，以下为详细信息：\n{e}")
-
+    messagebox.showinfo("成功", "处理完成！")
 
 def browse_input_dir():
     input_dir = filedialog.askdirectory()
@@ -109,19 +111,16 @@ label1 = tk.Label(root, text="需要处理的目录：")
 label1.grid(row=0, column=0, padx=(10, 0))
 input_entry = tk.Entry(root, width=30)
 input_entry.grid(row=0, column=1, padx=(10, 0))
-input_dir = input_entry.get()
 
 label2 = tk.Label(root, text="后缀名：")
 label2.grid(row=1, column=0, padx=(10, 0))
 suffix_entry = tk.Entry(root, width=15)
 suffix_entry.grid(row=1, column=1, padx=(10, 0))
-suffix = suffix_entry.get()
 
 label3 = tk.Label(root, text="输出目录：")
 label3.grid(row=2, column=0, padx=(10, 0))
 output_entry = tk.Entry(root, width=30)
 output_entry.grid(row=2, column=1, padx=(10, 0))
-output_dir = output_entry.get()
 
 input_button = tk.Button(root, text="目录选择", command=browse_input_dir)
 input_button.grid(row=0, column=2)
